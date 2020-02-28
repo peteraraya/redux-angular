@@ -1,0 +1,23 @@
+<h3>Contador</h3>
+<h4>{{ contador }}</h4>
+
+<div class="row">
+    <div class="col">
+        <button (click)="multiplicar()"
+                type="button" 
+                class="btn btn-primary mr-1">Multiplicar</button>
+        <button (click)="dividir()"
+                type="button" 
+                class="btn btn-primary ml-1">Dividir</button>
+        
+    </div>
+</div>
+
+
+<!-- Componente nieto -->
+<div class="row text-center">
+    <div class="col">
+        <!-- <app-nieto [contador]="contador" (contadorCambio)="resetNieto($event)"></app-nieto> -->
+        <app-nieto></app-nieto>
+    </div>
+</div>
