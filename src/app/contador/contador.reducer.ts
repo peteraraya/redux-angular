@@ -1,40 +1,18 @@
-// import { Action } from '@ngrx/store';
-import { DIVIDIR } from './contador.actions';
-// ACCIONES
-// import { 
-//         actions,
-//         INCREMENTAR, 
-//         DECREMENTAR, 
-//         MULTIPLICAR,
-//         RESET
-//        } from './contador.actions';
 
-import * as fromContador from './contador.actions';
-
-export function contadorReducer(state: number = 10, action: fromContador.actions){
-    // La acción es de tipo Action
-
-    switch (action.type) {
-      case fromContador.INCREMENTAR:
-        return state + 1;
-
-      case fromContador.DECREMENTAR:
-        return state - 1;
-
-      case fromContador.MULTIPLICAR:
-        return state * action.payload;
-
-      case fromContador.DIVIDIR:
-        return state / action.payload;
-
-      case fromContador.RESET:
-        return 0;
-
-      default:
-        return state;
-    }
+import { incrementar, decrementar, multiplicar, dividir, reset } from './contador.actions';
+import { createReducer, on } from '@ngrx/store';
 
 
+export const initialState = 20;
+
+const _contadorReducer = createReducer(initialState,
+  on(incrementar, state => state + 1),
+  on(decrementar, state => state - 1),
+  on(reset, state => initialState),
+  on(multiplicar, (state, { numero }) => state * numero),
+  on(dividir, (state, { numero }) => state / numero),
+);
+
+export function contadorReducer(state, action) {
+  return _contadorReducer(state, action);
 }
-
-

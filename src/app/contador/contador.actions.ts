@@ -1,41 +1,59 @@
-import { Action } from '@ngrx/store';
-// Acciones
-export const  INCREMENTAR = '[Contador] Incrementar';
-export const  DECREMENTAR = "[Contador] Decrementar";
-export const  MULTIPLICAR = "[Contador] Multiplicar";
-export const  DIVIDIR     = "[Contador] Dividir";
-export const  RESET       = "[Contador] Reset";
 
-export class IncrementarAction implements Action{
-    readonly type = INCREMENTAR;
-};
+import { createAction, props } from '@ngrx/store';
 
-export class DecrementarAction implements Action{
-    readonly type = DECREMENTAR;
-};
+export const incrementar = createAction('[Contador] Incrementar');
+export const decrementar = createAction('[Contador] Decrementar');
+export const reset = createAction('[Contador] Reset');
 
-export class MultiplicarAction implements Action{
-    readonly type = MULTIPLICAR;
+export const multiplicar = createAction(
+    '[Contador] Multiplicar',
+    props<{ numero: number }>()
+);
 
-    constructor(public payload: number){}
-};
+export const dividir = createAction(
+    '[Contador] Dividir',
+    props<{ numero: number }>()
+);
 
-export class DividirAction implements Action {
-         readonly type = DIVIDIR;
-         constructor(public payload: number) {}
-       };
+// import { Action } from '@ngrx/store';
 
-export class ResetAction implements Action {
-    readonly type = RESET;
+// // Acciones
+// export const  incrementar = '[Contador] Incrementar';
+// export const  decrementar = "[Contador] Decrementar";
+// export const  multiplicar = "[Contador] Multiplicar";
+// export const  dividir     = "[Contador] Dividir";
+// export const  reset       = "[Contador] Reset";
+
+// export class IncrementarAction implements Action{
+//     readonly type = incrementar;
+// };
+
+// export class DecrementarAction implements Action{
+//     readonly type = decrementar;
+// };
+
+// export class MultiplicarAction implements Action{
+//     readonly type = multiplicar;
+
+//     constructor(public payload: number){}
+// };
+
+// export class DividirAction implements Action {
+//          readonly type = dividir;
+//          constructor(public payload: number) {}
+//        };
+
+// export class ResetAction implements Action {
+//     readonly type = reset;
    
-};
+// };
 
 
 
-// Modificación necesaria para que aprescan los payload
- // acciones validas son de este tipo
-export type actions = IncrementarAction |
-                      DecrementarAction | 
-                      MultiplicarAction |
-                      DividirAction     |
-                      ResetAction; 
+// // Modificación necesaria para que aprescan los payload
+//  // acciones validas son de este tipo
+// export type actions = IncrementarAction |
+//                       DecrementarAction | 
+//                       MultiplicarAction |
+//                       DividirAction     |
+//                       ResetAction; 
